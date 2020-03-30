@@ -49,3 +49,9 @@
     Save the settings first:
         File > Save as > ebgC_settings
     Generate BEAST file 
+
+# Step 3: Run BEAST
+    Import the xml file generated from BEAUTi:
+        Choose File ... > ebgC.xml
+    *** Uncheck the Use BEAGLE library if available box unless you know that BEAGLE is properly installed on your computer ***
+    Click the Run button and wait 

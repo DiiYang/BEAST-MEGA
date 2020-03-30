@@ -9,4 +9,6 @@
           (5) Tracer summarizes these trees and helps you to choose how many of the early created low-probability trees to discard from the final consensus tree (the burnin). It is most convinient to put Tracer into the BEAST folder along with other programs.
           (6) FigTree is a tree drawing program that is compatible with the trees written by BEAST and TreeAnnotator
 4. Java Runtime Environment / JRE (https://www.oracle.com/java/technologies/javase-downloads.html)
-
+5. BEAGLE library for windows (https://github.com/beagle-dev/beagle-lib/)
+    Note: BEAGLE library is a high-performance library that can perform the core calculations at the heart of most Bayesian and Maximum Likelihood phylogenetics packages. It can make use of highly-parallel processors such as those in graphics cards found in many PCs.
+    
