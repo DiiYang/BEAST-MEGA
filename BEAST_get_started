@@ -1,0 +1,12 @@
+# Softwares needed: 
+1. BEAST for windows (http://beast.community/install_on_windows) 
+2. Tracer for windows (http://tree.bio.ed.ac.uk/software/tracer/ ; https://github.com/beast-dev/tracer/releases) 
+3. FigTree for windows (http://tree.bio.ed.ac.uk/software/figtree/ ; https://github.com/rambaut/figtree/releases)
+    Note: (1) Package 1 includes five applications, BEAST, BEAUTi, TreeAnnotator, TreeStat, and LogCombiner
+          (2) BEAUTi is where you set up all the conditions for your models, BEAUTi will wirte an .xml input file for BEAST
+          (3) BEAST runs the Bayesian anlysis on your input file, and will write a .trees file consisting of a set of thousands of trees
+          (4) TreeAnnotator helps to make the consensus tree with posterior probabilities as the statistic of reliability for each node
+          (5) Tracer summarizes these trees and helps you to choose how many of the early created low-probability trees to discard from the final consensus tree (the burnin). It is most convinient to put Tracer into the BEAST folder along with other programs.
+          (6) FigTree is a tree drawing program that is compatible with the trees written by BEAST and TreeAnnotator
+4. Java Runtime Environment / JRE (https://www.oracle.com/java/technologies/javase-downloads.html)
+

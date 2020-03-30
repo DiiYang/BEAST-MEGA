@@ -1,0 +1,26 @@
+# Resources needed for this trail: https://oup-arc.com/access/hall-5e-student-resources#tag_all-resources
+
+# Step 1: Prepare the input alignment file 
+    Open ebgC_aligned.mas in MEGA:
+    Data > Export Alignment > Nexus format, save the file as ebgC.nxs 
+    Optional : Data > Export Alignment > FASTA format, save the file as ebgC.fas 
+               Open ebgC.fas in Seaview5
+               File > Save as > Nexus format, save the file as ebgC.nxs 
+        Note :  (1) BEAUTi cannot read FASTA file, so you need to convert the FASTA file to Nexus file first
+                (2) MEGA can directly save the output file in Nexus format, if you are using an old version MEGA, this nexus format could be wrong for BEAUTi, in this case, save as FASTA formate and use Seaview5 to convert to Nexus format 
+
+# Step 2: Run BEAUTi
+    Start BEAUTi and import the file generated above:
+    File > Import Data > ebgC.nxs 
+        Note :  (1) Do not choose OPEN, BEAUTi cannot open files created by other applications, use Import option 
+                (2) tab Partitions: basic information about the alignment
+                (3) tab Taxa: 
+                (4) tab Tips: a list of the taxa sequences, you cannot do anything with this list, but you can check to see that all the expected sequences are there
+                (5) tab Traits:
+                (6) tab Sites: 
+                (7) tab Clocks:
+                (8) tab Trees:
+                (9) tab States:
+                (10) tab Priors:
+                (11) tab Operators: 
+                (12) tab MCMC: 
