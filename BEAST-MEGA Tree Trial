@@ -2,7 +2,7 @@
 
 # Step 1: Prepare the input alignment file 
     Open ebgC_aligned.mas in MEGA:
-    Data > Export Alignment > Nexus format, save the file as ebgC.nxs 
+        Data > Export Alignment > Nexus format, save the file as ebgC.nxs 
     Optional : Data > Export Alignment > FASTA format, save the file as ebgC.fas 
                Open ebgC.fas in Seaview5
                File > Save as > Nexus format, save the file as ebgC.nxs 
@@ -11,16 +11,41 @@
 
 # Step 2: Run BEAUTi
     Start BEAUTi and import the file generated above:
-    File > Import Data > ebgC.nxs 
+        File > Import Data > ebgC.nxs 
         Note :  (1) Do not choose OPEN, BEAUTi cannot open files created by other applications, use Import option 
                 (2) tab Partitions: basic information about the alignment
                 (3) tab Taxa: 
-                (4) tab Tips: a list of the taxa sequences, you cannot do anything with this list, but you can check to see that all the expected sequences are there
+                (4) tab Tips: a list of the taxa sequences, you cannot do anything with this list, but you can check to see that all the expected sequences are there. You can give the taxa dates here. Taxon dates (tip dates) are only important in certain cases, for example, when they sampled from fast evoving viruses or sub-fossil ancient DNA material. Default = 0, and the USE TIP DATES box is not selected
                 (5) tab Traits:
-                (6) tab Sites: 
-                (7) tab Clocks:
-                (8) tab Trees:
+                (6) tab Sites: here you can set the model of molecular evoltion of the sequence data you have loaded
+                (7) tab Clocks: here you can set the model of molecular clock you will use. The simplest model is the defaul "Strict clock" , which assusmes that all branches on the tree have the same rate of evolutioná
+                (8) tab Trees: here you can set the model that provides a prior on the tree and some choices about the starting tree in the MCMC run. The Tree Prior option has many choices divided into Coalescent models and Speciation models. Coalescent models are generally suited to populations, and Speciation models are intended for species level data. In most situations it is better to use Random starting tree as this generates a random tree to start the BEAST run with.
                 (9) tab States:
-                (10) tab Priors:
-                (11) tab Operators: 
-                (12) tab MCMC: 
+                (10) tab Priors: this tab allows priors to be specified for each parameter in the model. Selecting priors is one of the most challenging aspects of Bayesian analysis.
+                (11) tab Operators: Each parameter in the model has one or more operators. The operators specify how the parameter changes as the MCMC runs.
+                (12) tab MCMC: (Markov chain Monte Carlo)  this tab provides settings to control the actual running of BEAST 
+    Click the Sites tab to set the Substitution Model: 
+        Substitution Model : HKY (four choices, JC, HKY, GTR, TN93) 
+        Base frequencies : Estimated (three choices, Estimated, Empirical, All equal)
+        Site Heterogeneity Model : Gamma (four choices, None, Gamma, Invariant Sites, Gamma + Invariant Sites)
+        Partition into codon positions : 3 partitions: positions 1,2,3 (three choices, off, 2 partitions, 3 partitions, these options determine whether different codon positions evolve at the same or different rates)
+    Click the Trees tab to set the tree models:
+        Tree Prior : Coalescent: Constant Size
+        Tree Model： Random starting tree 
+    Click the Priors tab to reveal the parameters:
+        Click the box "Use classic priors/operators"
+        Check the wrong settings 
+        Click on the yellow Prior setting for allMus 
+        Change Prior Distribution: Uniform
+    Click the MCMC tab to review the settings:
+        Length of chain : 10000000
+        Echo state to screen every : 10000
+        Log parameters every : 1000
+        File name stem : ebgC
+        Note :  (1) Length of Chain: sets the total number of steps that BEAST will eecute. 
+                (2) Echo state to screen every : determines how often the state of the chain is printed to the screen. There is no benefit from printing out the state very often, and too often may slow down the program a lot.
+                (3) Log parameters every: this is very important settings. It determines how often the current tree is saved. The setting should be no lower than the length of the chain divided by 10,000.
+                (4) File name stem: this determins how all of the output files will be named.
+    Save the settings first:
+        File > Save as > ebgC_settings
+    Generate BEAST file 
