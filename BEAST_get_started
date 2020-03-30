@@ -1,14 +1,41 @@
 # Softwares needed: 
-1. BEAST for windows (http://beast.community/install_on_windows) 
-2. Tracer for windows (http://tree.bio.ed.ac.uk/software/tracer/ ; https://github.com/beast-dev/tracer/releases) 
-3. FigTree for windows (http://tree.bio.ed.ac.uk/software/figtree/ ; https://github.com/rambaut/figtree/releases)
-    Note: (1) Package 1 includes five applications, BEAST, BEAUTi, TreeAnnotator, TreeStat, and LogCombiner
-          (2) BEAUTi is where you set up all the conditions for your models, BEAUTi will wirte an .xml input file for BEAST
-          (3) BEAST runs the Bayesian anlysis on your input file, and will write a .trees file consisting of a set of thousands of trees
-          (4) TreeAnnotator helps to make the consensus tree with posterior probabilities as the statistic of reliability for each node
-          (5) Tracer summarizes these trees and helps you to choose how many of the early created low-probability trees to discard from the final consensus tree (the burnin). It is most convinient to put Tracer into the BEAST folder along with other programs.
-          (6) FigTree is a tree drawing program that is compatible with the trees written by BEAST and TreeAnnotator
-4. Java Runtime Environment / JRE (https://www.oracle.com/java/technologies/javase-downloads.html)
-5. BEAGLE library for windows (https://github.com/beagle-dev/beagle-lib/)
-    Note: BEAGLE library is a high-performance library that can perform the core calculations at the heart of most Bayesian and Maximum Likelihood phylogenetics packages. It can make use of highly-parallel processors such as those in graphics cards found in many PCs.
-    
+    1. BEAST for windows (http://beast.community/install_on_windows) 
+    2. Tracer for windows (http://tree.bio.ed.ac.uk/software/tracer/ ; https://github.com/beast-dev/tracer/releases) 
+    3. FigTree for windows (http://tree.bio.ed.ac.uk/software/figtree/ ; https://github.com/rambaut/figtree/releases)
+        Note:   (1) Package 1 includes five applications, BEAST, BEAUTi, TreeAnnotator, TreeStat, and LogCombiner
+                (2) BEAUTi is where you set up all the conditions for your models, BEAUTi will wirte an .xml input file for BEAST
+                (3) BEAST runs the Bayesian anlysis on your input file, and will write a .trees file consisting of a set of thousands of trees
+                (4) TreeAnnotator helps to make the consensus tree with posterior probabilities as the statistic of reliability for each node
+                (5) Tracer summarizes these trees and helps you to choose how many of the early created low-probability trees to discard from the final consensus tree (the burnin). It is most convinient to put Tracer into the BEAST folder along with other programs.
+                (6) FigTree is a tree drawing program that is compatible with the trees written by BEAST and TreeAnnotator
+    4. Java Runtime Environment / JRE (https://www.oracle.com/java/technologies/javase-downloads.html)
+    5. BEAGLE library for windows (https://github.com/beagle-dev/beagle-lib/)
+        Note: BEAGLE library is a high-performance library that can perform the core calculations at the heart of most Bayesian and Maximum Likelihood phylogenetics packages. It can make use of highly-parallel processors such as those in graphics cards found in many PCs.
+
+
+# Input file format
+    For BEAUTi: Nexus file (generated from MEGA, or MEGA-Seaview5, depending on the version of MEGA you may need to export the FASTA file from MEGA first and convert it to Nexus using Seaview5)
+    For BEAST: BEAST xml file (generated from BEAUTi) or aligned FASTA file
+
+# Basic steps for BEAUTi run 
+    Use MEGA (or MEGA-Seaview5) to generate the proper input file for BEAUTi, input.nxs 
+    Run BEAUTi
+        Load the Nexus file
+        Set the dates of the taxa
+        Set the evolutionary models
+        Set the molecular clock models
+        Set the tree prior models
+        Set Priors
+        Set MCMC operators
+        Check the MCMC options
+        Save the settings
+        Generate the BEAST xml file, input_name.xml
+
+# Output file from BEAUTi run : input_name.xml
+
+# Basic steps for BEAST run
+    Load the BEAST xml file as input, input_name.xml
+    Check if BEAGLE library available
+    Run BEAST and wait, input_name.log.txt, input_name.trees.txt, input_name.ops.txt
+
+# Output files from BEAST run : input_name.log.txt, input_name.trees.txt, input_name.ops.txt
