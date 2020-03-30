@@ -7,7 +7,7 @@
                Open ebgC.fas in Seaview5
                File > Save as > Nexus format, save the file as ebgC.nxs 
         Note :  (1) BEAUTi cannot read FASTA file, so you need to convert the FASTA file to Nexus file first
-                (2) MEGA can directly save the output file in Nexus format, if you are using an old version MEGA, this nexus format could be wrong for BEAUTi, in this case, save as FASTA formate and use Seaview5 to convert to Nexus format 
+                (2) MEGA can directly save the output file in Nexus format, if you are using an old version MEGA, this nexus format could be wrong for BEAUTi, in this case, save as FASTA format and use Seaview5 to convert to Nexus format 
 
 # Step 2: Run BEAUTi
     Start BEAUTi and import the file generated above:
@@ -56,3 +56,18 @@
     *** Uncheck the Use BEAGLE library if available box unless you know that BEAGLE is properly installed on your computer ***
     *** After installing the BEAGLE library, always restart your BEAST!!! ***
     Click the Run button and wait 
+         The text window looks like: 
+            state	Joint       	Prior       	Likelihood  	rootHeight  
+            0	    -23113.1909 	-717.9743   	-22395.2166 	1.35112     	-
+            10000	-12585.3101 	-783.5359   	-11801.7743 	1.83517     	-
+            20000	-12585.5000 	-783.5025   	-11801.9975 	2.19953     	1.45 minutes/million states
+            30000	-12582.2368 	-783.6090   	-11798.6278 	1.73323     	1.44 minutes/million states
+            40000	-12588.5605 	-787.4368   	-11801.1237 	2.51361     	1.41 minutes/million states
+            50000	-12589.5385 	-788.1961   	-11801.3424 	1.90956     	1.4 minutes/million states
+            
+            Column 1: state, shows the number of steps so far, in 10,000-step increments
+            Column 2: Joint, shows the log of the posterior probability of the current tree 
+            Column 3: Prior, shows the log of the prior probability of the current tree
+            Column 4: Likelihood, shows the log Likelihood of the current tree 
+            Column 5: rootHeight
+            Column 6: the time required for each million states
