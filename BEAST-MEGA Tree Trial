@@ -54,4 +54,5 @@
     Import the xml file generated from BEAUTi:
         Choose File ... > ebgC.xml
     *** Uncheck the Use BEAGLE library if available box unless you know that BEAGLE is properly installed on your computer ***
+    *** After installing the BEAGLE library, always restart your BEAST!!! ***
     Click the Run button and wait 
