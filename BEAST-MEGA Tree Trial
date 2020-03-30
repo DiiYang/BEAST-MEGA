@@ -71,3 +71,9 @@
             Column 4: Likelihood, shows the log Likelihood of the current tree 
             Column 5: rootHeight
             Column 6: the time required for each million states
+
+### Output files we have till now ###
+    From BEAUTi run : ebgC.xml
+    From BEAST run : ebgC.log.txt, ebgC.trees.txt, ebgC.ops.txt
+
+
