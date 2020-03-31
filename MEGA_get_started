@@ -1,0 +1,22 @@
+# Align the sequences
+    Import sequences from file:
+        Data > Open > Retrieve sequences from File > C1_test.fasta
+    Align the sequences:
+        Alignment > Align by Muscle > Align DNA 
+            Note :  (1) ClustalW implements an iterative algorithm so mistakes produce in earlier step are quite unlikely to be corrected in later step
+                    (2) Muscle (Multiple Sequence Comparison by Log-Expectation) implements an progressive algorithm allowing re-optimizations of columns during the whole process
+                    (3) Out of the two programs, choose Muscle
+    Check the Muscle parameters 
+    Compute and wait
+    Export the aligned sequence:
+        Data > Export Alignment > MEGA Format > C1_test.meg 
+
+# Make a Neighbor Joining Tree
+    In MEGA's main window, open the above file:
+        File > Open a File/Session > C1_test.meg
+    Construct phylogenetic tree:
+        Phylogeny > Construct/Test Neighbor-Joining Tree > Yes > OK
+    Save the Tree explorer:
+         File > Save Current Sessions > C1_test.mtsx
+         
+    
