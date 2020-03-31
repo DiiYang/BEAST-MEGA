@@ -74,6 +74,12 @@
 
 ### Output files we have till now ###
     From BEAUTi run : ebgC.xml
-    From BEAST run : ebgC.log.txt, ebgC.trees.txt, ebgC.ops.txt
+    From BEAST run : ebgC.log, ebgC.trees, ebgC.ops 
 
-
+# Step 4: Run Tracer
+    Import the .log file generated from BEAST to Tracer:
+        File > Import Trace File > ebgC.log 
+    Click the Trace tab at the top of the window to change the Traces window
+    Select different Traces to visulize the graphs
+    Change Burn-in value to exclude low probability trees in the final consensus tree 
+    
