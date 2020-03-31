@@ -36,6 +36,6 @@
 # Basic steps for BEAST run
     Load the BEAST xml file as input, input_name.xml
     Check if BEAGLE library available
-    Run BEAST and wait, input_name.log.txt, input_name.trees.txt, input_name.ops.txt
+    Run BEAST and wait, input_name.log, input_name.trees, input_name.ops 
 
-# Output files from BEAST run : input_name.log.txt, input_name.trees.txt, input_name.ops.txt
+# Output files from BEAST run : input_name.log, input_name.trees, input_name.ops 
