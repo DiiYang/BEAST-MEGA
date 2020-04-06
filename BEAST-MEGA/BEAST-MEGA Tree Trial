@@ -34,9 +34,9 @@
         Tree Model： Random starting tree 
     Click the Priors tab to reveal the parameters:
         Click the box "Use classic priors/operators"
-        Check the wrong settings 
+            Check the wrong settings 
         Click on the yellow Prior setting for allMus 
-        Change Prior Distribution: Uniform
+            Change Prior Distribution: Uniform
     Click the MCMC tab to review the settings:
         Length of chain : 10000000
         Echo state to screen every : 10000
@@ -82,4 +82,16 @@
     Click the Trace tab at the top of the window to change the Traces window
     Select different Traces to visulize the graphs
     Change Burn-in value to exclude low probability trees in the final consensus tree 
-    
+
+# Step 5: Run TreeAnnotator
+    Import the .tree file generated from BEAST to TreeAnnotator:
+       Input Tree File > Choose File... > ebgC.tree
+    Specify the output file:
+        Output File > Choose File... > ebgC.MCC.tree
+    Specify the burnin as the number of states : 200000
+    Run and wait
+
+# Step 6: Visualize the tree in FigTree
+     Import the .MCC.tree file in FigTree:
+        File > Open ... > ebgC.MCC.tree
+         
