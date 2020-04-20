@@ -23,6 +23,14 @@ mkdir output
 chos 7
 makeblastdb -in ./db/Festuca_ovina_PGI_sequences.fasta -dbtype nucl -parse_seqids -out ./db/Festuca_ovina_PgiC1_db 
 
+# Edit the search path 
+nano ~/.bashrc
+export BLASTDB="~/Analysis/blast/db"
+alias QUERY="/pub36/diy/Analysis/blast/query"
+alias SUBJECT="/pub36/diy/Analysis/blast/db"
+alias BLASTOUT="/pub36/diy/Analysis/blast/output"
+source ~/.bashrc
+
 # Blast PgiC1 sequence data against the reference 
 blastn -query ./query/PgiC1_demul_merged.fasta -db ./db/Festuca_ovina_PGI_sequences.fasta -out ./output/PgiC1_blast.txt -evalue 1e-10 -num_threads 96 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
 BLAST Database error: No alias or index file found for nucleotide database [./subject/Festuca_ovina_PGI_sequences.fasta] in search path [/scratch/diy/blast:/pub28/db/blastdb:]
