@@ -14,27 +14,23 @@ export PATH=$pub36/diy/program/cbi-blast-2.10.0+/bin:$PATH
 # Prepare the BLAST folders, I will need: subject, query, and output folders
 mkdir blast
 cd blast
-mkdir subject
+mkdir db
 mkdir query
 mkdir output
 
 # Prepare the BLAST database for my reference sequences in the FASTA file
 # -parse_seqids: keep the original sequence identifiers
 chos 7
-makeblastdb -in ./subject/Festuca_ovina_PGI_sequences.fasta -dbtype nucl -parse_seqids -out ./output/Festuca_ovina_PgiC1_db 
+makeblastdb -in ./db/Festuca_ovina_PGI_sequences.fasta -dbtype nucl -parse_seqids -out ./db/Festuca_ovina_PgiC1_db 
 
 # Blast PgiC1 sequence data against the reference 
-blastn -query ./query/PgiC1_demul_merged.fasta -db ./subject/Festuca_ovina_PGI_sequences.fasta -out ./output/PgiC1_blast.txt -evalue 1e-10 -num_threads 96 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
+blastn -query ./query/PgiC1_demul_merged.fasta -db ./db/Festuca_ovina_PGI_sequences.fasta -out ./output/PgiC1_blast.txt -evalue 1e-10 -num_threads 96 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
 BLAST Database error: No alias or index file found for nucleotide database [./subject/Festuca_ovina_PGI_sequences.fasta] in search path [/scratch/diy/blast:/pub28/db/blastdb:]
 
-# Create reference index
-hisat2-build ./subject/Festuca_ovina_PGI_sequences.fasta ./subject/Festuca_ovina_PGI_sequences
 
-blastn -query $QUERY/PgiC1_demul_merged.fasta \
--db $SUBJECT/Festuca_ovina_PgiC1_db \
--out $BLASTOUT/PgiC1_blast.txt \
--evalue 1e-2 -num_threads 48 \
--outfmt "6 qseqid sseqid qlen slen length qstart qend sstart send evalue pident"
-BLAST Database error: No alias or index file found for nucleotide database [/pub36/diy/Analysis/blast/subject/Festuca_ovina_PgiC1_db] in search path [/pub36/diy/Analysis/blast:/pub28/db/blastdb:]
+blastn -query ./query/PgiC1_demul_merged.fasta -db ./db/Festuca_ovina_PgiC1_db -out ./output/PgiC1_blast.txt -evalue 1e-10 -num_threads 96 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
 
-# search path [/pub36/diy/Analysis/blast:/pub28/db/blastdb:] WHY????
+# Repeat above steps for PgiC2
+makeblastdb -in ./db/Festuca_ovina_PGI_sequences.fasta -dbtype nucl -parse_seqids -out ./db/Festuca_ovina_PgiC2_db 
+
+blastn -query ./query/PgiC2_demul_merged.fasta -db ./db/Festuca_ovina_PgiC2_db -out ./output/PgiC2_blast.txt -evalue 1e-10 -num_threads 96 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
