@@ -44,6 +44,10 @@ makeblastdb -in ./db/Festuca_ovina_PGI_sequences.fasta -dbtype nucl -parse_seqid
 blastn -query ./query/PgiC2_demul_merged.fasta -db ./db/Festuca_ovina_PgiC2_db -out ./output/PgiC2_blast.txt -evalue 1e-10 -num_threads 96 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
 
 # Report the best hit only
+# -query: the query sequence, .fasta
+# -db: the database to use
+# -out: output file
+# -outfmt format 5=xml 6=xlsx 7=xlsx with comment lines 
 blastn -query ./query/PgiC1_demul_merged.fasta -db ./db/Festuca_ovina_PgiC1_db -out ./output/PgiC1_blast_best_hit.txt -evalue 1e-10 -num_threads 96 -num_alignments 1 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
 blastn -query ./query/PgiC2_demul_merged.fasta -db ./db/Festuca_ovina_PgiC2_db -out ./output/PgiC2_blast_best_hit.txt -evalue 1e-10 -num_threads 96 -num_alignments 1 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
 
