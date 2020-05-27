@@ -54,3 +54,16 @@ blastn -query ./query/PgiC2_demul_merged.fasta -db ./db/Festuca_ovina_PgiC2_db -
 # Filter out the records that have less than 2000 matches
 awk '{if ($5<2000) print $1}' PgiC1_blast_best_hit_sorted.txt
 # After doing so, I get empty output files. The -word_size argument is confusing, try to do the filteration in R instead of linux
+
+# For my work, I need to identify whether the PgiC2 sequences are active or inactive version
+# To do so, preparing a new database, containing only the deletion sequence which differs between active and inactive version C2 gene
+nano PgiC2_pseudo_deletion.fasta
+
+>PgiC2_pseudo_deletion
+AGATTTTTGGAGGGTGCTTCCAGCATTGA
+
+chos 7
+makeblastdb -in ./db/PgiC2_pseudo_deletion.fasta -dbtype nucl -parse_seqids -out ./db/PgiC2_pseudo_deletion_db
+
+# Generate the standalone blast using this new database 
+blastn -query ./query/PgiC2_demul_unique.fasta -db ./db/PgiC2_pseudo_deletion_db -out ./output/PgiC2_blast_deletion.txt -evalue 1e-10 -num_threads 96 -num_alignments 1 -outfmt "6 qseqid sseqid qlen slen length evalue pident"
