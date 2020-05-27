@@ -1,0 +1,25 @@
+#### megacc on linux cluster ####
+
+## Install MEGAX on linux cluster ##
+# Download MEGAX from https://www.megasoftware.net/ and install on cluster
+tar -zxvf megacc_10.1.8_amd64.tar.gz 
+sudo dpkg -i megax-cc_10.1.8-1_amd64.deb
+# Attahc the megacc to the working path
+nano ~/.bashrc
+export PATH="~/program/megacc/:$PATH"
+source ~/.bashrc
+
+
+## Use megacc to generate multi sequence alignment ##
+
+# Create setting.mao for megacc
+# To do this, I need the windows MEGAX to set the parameters:
+#       1) Go to MEGAX
+#       2) Set mode to PROTOTYPE (right corner on the screen, below ANALYZE)
+#       3) Set the data type as needed, mine: Nucleotide(Non-coding)
+#       4) Choose the functions as needed, mine: MUSCLE DNA alignment
+#       5) Check the parameters, and click on Save Settings, save it as muscle_align_nucleotide.mao
+# Upload the setting.mao to cluster, and move it to the same folder as the fasta file that need to be analyzed
+# Generate the multi sequence alignment
+megacc -a muscle_align_nucleotide.mao -d PgiC1_demul_merged.fasta -o ./result/ -f Fasta 
+megacc -a muscle_align_nucleotide.mao -d PgiC2_demul_unique.fasta -o ./result/ -f Fasta 
