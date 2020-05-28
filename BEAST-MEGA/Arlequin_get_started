@@ -1,0 +1,30 @@
+# Software needed:
+    (1) MegaX, and megacc on linux if needed
+    (2) DnaSP (for converting the file format)
+    (3) Arlequin
+
+# Prepare an Arlequin input file
+    Download the output alignment file from megacc as raw file 
+        PgiC2_demul_unique-58755.fasta  
+    Go to MegaX and save this raw file in nexus: 
+        PgiC2_megacc.nexus
+    Go to DnaSP, open the nexus file: 
+        File >  Open Data File > PgiC2_megacc.nexus > Close
+    Go to Data and check the sequence information:
+       Data > Format > Nucleotide sequence = DNA > Genomic State = Diploid > Chorosomal Location = Chloroplast > OK > OK
+    Go to Data and define sequence sets:
+        Data > Define Sequence Sets
+        Select sequences on the left side by population and add to the right side:
+            > Select All > >> Add new Sequence Set = PgiC2_unique > OK > Update all entries 
+        * If you need to check / change sequence sets:
+            Data > Define Sequence sets > Sequence Sets > Select the set you want to change > Modify the set > Update all entries
+    Save the file for backup (.nex) and for Arlequin (.arp):
+        File > Save/Export Data As > Nexus format > PgiC2_dnasp.nex
+        File > Save/Export Data As > Arlequin format > Data Set = PgiC2_unique > Generate = Arlequin Haplotype List > OK > Name the output files 
+        * Output file: PgiC2_dnasp.hap, PgiC2_dnasp.arp 
+    Check if all the sequences are included:
+        PgiC2_dnasp.arp > Open with text editor > Check if the last group starts with SampleName = "Additional_Seqs"
+
+# Arlequin 
+    Open project > PgiC2_dnasp.arp > PgiC2_unique > 
+    
