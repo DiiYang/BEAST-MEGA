@@ -58,14 +58,14 @@ ICONPATH = 'file:////pub36/diy/program/Arlequin/arlecore_linux/PgiC2_manually_ge
 #       (4) Create the Graphics folder in advance
 mkdir Graphics
 
-#       (5) Check the path for R:
-parseArlequin <- function(infile, outfiles, sourcePath){
+#       (5) Check the R scripts:
+parseArlequin <- function (infile, outfile, sourcePath){
   # open XML package------------------------------------------------------------
   try({
     library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_3.5", sep=""))
   })
   try({
-    library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_3.0", sep=""))
+    library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_3.2", sep=""))
   })
   try({
     library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_2.12", sep=""))
@@ -75,19 +75,9 @@ parseArlequin <- function(infile, outfiles, sourcePath){
   })
 
   try({
- #   library(XML)
+  #  library(XML)
   })
 
   # get XML file into an R Structure--------------------------------------------
   doc = xmlTreeParse(infile, useInternal = TRUE)
   root = xmlName(xmlRoot(doc))        #get root name
-
-#       To:
-parseArlequin <- function(~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res, ~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/Graphics, ~/program/Arlequin/arlecore_linux/Rfunctions/){
-doc = xmlTreeParse(~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/PgiC2_manually_genotypic.xml, useInternal = TRUE)
-root = xmlName(xmlRoot(doc))       
-
-: command not foundline 8:
-: command not foundline 9:
-./parseArlequin.r: line 10: syntax error near unexpected token `('
-./parseArlequin.r: line 10: `parseArlequin <- function(~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res, ~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/Graphics, ~/program/Arlequin/arlecore_linux/Rfunctions/'{
