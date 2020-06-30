@@ -1,0 +1,93 @@
+#### Arlequin getting started ####
+
+# Q: What is needed to run Arlecore (the console version of Arlequin)?
+# A: 1. Arlecore executable file under windows / linux
+#       http://cmpg.unibe.ch/software/arlequin35/win/WinArl35.zip
+#       http://cmpg.unibe.ch/software/arlequin35/linux/arlecore_linux.zip
+#       http://cmpg.unibe.ch/software/arlequin35/linux/arlsumstat_linux.zip
+#       http://cmpg.unibe.ch/software/arlequin35/R/Rfunctions.zip
+    unzip arlecore_linux.zip ~/program/Arlequin/
+    chmod a+x ~/program/Arlequin/arlecore_linux/LaunchArlecore.sh
+    chmod a+x ~/program/Ar;eqiom/arlecore_linux/arlecore3522_64bit
+    unzip arlsumstat_linux.zip ~/program/Arlequin/
+    chmod a+x ~/program/Arlequin/arlsumstat_linux/LaunchArlSumStat.sh
+    unzip Rfunctions.zip
+# A: 2. Input file created with the windows version of Arlequin (.arp)
+#   - Launch the windows version of Arlequin
+#   - Go to Project Wizard
+#   - Click on Create Project, and choose the parameters according to your data
+#   - Click on Edit project to open the input file with text editor, check the data type information, and change anything needed
+#   - Save the input file and copy this .arp file to the directory
+# A: 3. Setting file created with the windows version of Arlequin (.ars)
+#   - Launch the windows version of Arlequin
+#   - Open a project file 
+#   - Choose the computations you want to perform
+#   - Save the settings and copy this .ars file to the directory
+
+# Q: What is needed to virw the html or xml result files?
+# A: All the gif, js, xsl, and R files provided in the archive file arlecore*.zip
+
+# Q: How to launch arlecore?
+# A: - Keep these files in the same directory: input.arp, setting.ars, arlecore3522_64bit, LauchArlecore.sh
+#    - Check the version of arlecore you are using 
+ ./arlecore3522_64bit
+
+ # Q: Where are the output files?
+ # A: Once the above command finishes, it automatically generate a .res folder containing all the results
+ 
+# How to handle the output files?
+# A:   (1) Edit the path line in xml file, originally:
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="file:////pub36/diy/program/Arlequin/arlecore_linux/ArlequinStyleSheet.xsl"?>
+<!--Arlequin results file-->
+#       To:
+<?xml-stylesheet type="text/xsl" href="file:////pub36/diy/program/Arlequin/arlecore_linux/ArlequinStyleSheet.xsl"?>
+
+#       (2) Edit the path for images and styles in the .js file, originally:
+ICONPATH = 'file:////pub36/diy/program/Arlequin/arlecore_linux/'    //change if the gif's folder is a subfolder, for example: 'images/'
+#       To:
+ICONPATH = 'file:////pub36/diy/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/Graphics/'    //change if the gif's folder is a subfolder, for example: 'images/'
+
+#       (3) Check the path in _tree.htm, the path must be relative for script ua.js and ftiense4.js:
+<!-- Code for browser detection -->
+<script src="file:////pub36/diy/program/Arlequin/arlecore_linux/ua.js"></script>
+
+<!-- Infrastructure code for the tree -->
+<script src="file:////pub36/diy/program/Arlequin/arlecore_linux/ftiens4.js"></script>
+
+#       (4) Create the Graphics folder in advance
+mkdir Graphics
+
+#       (5) Check the path for R:
+parseArlequin <- function(infile, outfiles, sourcePath){
+  # open XML package------------------------------------------------------------
+  try({
+    library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_3.5", sep=""))
+  })
+  try({
+    library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_3.0", sep=""))
+  })
+  try({
+    library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_2.12", sep=""))
+  })
+  try({
+    library(XML, lib.loc=paste(substr(sourcePath, 0, nchar(sourcePath)-1), "\\R_2.11", sep=""))
+  })
+
+  try({
+ #   library(XML)
+  })
+
+  # get XML file into an R Structure--------------------------------------------
+  doc = xmlTreeParse(infile, useInternal = TRUE)
+  root = xmlName(xmlRoot(doc))        #get root name
+
+#       To:
+parseArlequin <- function(~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res, ~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/Graphics, ~/program/Arlequin/arlecore_linux/Rfunctions/){
+doc = xmlTreeParse(~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/PgiC2_manually_genotypic.xml, useInternal = TRUE)
+root = xmlName(xmlRoot(doc))       
+
+: command not foundline 8:
+: command not foundline 9:
+./parseArlequin.r: line 10: syntax error near unexpected token `('
+./parseArlequin.r: line 10: `parseArlequin <- function(~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res, ~/program/Arlequin/arlecore_linux/PgiC2_manually_genotypic.res/Graphics, ~/program/Arlequin/arlecore_linux/Rfunctions/'{
